@@ -1,0 +1,131 @@
+/* Soft, warm theme with gentle transitions */
+:root{
+  --bg: #fffaf8;
+  --card: #ffffff;
+  --ink: #2b2b2b;
+  --muted: #6b7280;
+  --accent: #f3c6c2; /* soft rose */
+  --accent-2: #e8f0ea; /* soft sage */
+  --shadow: 0 10px 30px rgba(0,0,0,.08);
+  --radius: 22px;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.65;
+}
+
+.bg-gradient{
+  position: fixed; inset: -20vmax;
+  background: radial-gradient(70vmax 70vmax at 15% 10%, rgba(243,198,194,.45), transparent),
+              radial-gradient(60vmax 60vmax at 85% 20%, rgba(212,232,221,.5), transparent),
+              radial-gradient(80vmax 80vmax at 50% 100%, rgba(255,235,219,.55), transparent);
+  filter: blur(40px);
+  z-index: -1;
+}
+
+.hero{padding: 32px 24px 0}
+.nav{
+  display:flex; gap:14px; justify-content:flex-end; max-width:1100px; margin:0 auto 12px;
+}
+.nav a{
+  text-decoration:none; color: var(--muted); font-weight:500; padding:8px 12px; border-radius:999px;
+  background: rgba(255,255,255,.6); backdrop-filter: blur(6px); transition:.25s;
+}
+.nav a:hover{ color:#111; transform:translateY(-1px) }
+
+.hero-inner{
+  max-width: 1100px; margin: 0 auto; display:grid; gap: 28px; align-items:center;
+  grid-template-columns: 1.2fr .9fr;
+}
+@media (max-width: 900px){
+  .hero-inner{ grid-template-columns: 1fr }
+}
+
+.chip{
+  display:inline-flex; align-items:center; gap:8px; font-size:14px; color:#333;
+  background: rgba(255,255,255,.7); padding:10px 14px; border-radius:999px; width:max-content;
+  box-shadow: var(--shadow);
+}
+
+.hero h1{
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 5vw, 56px);
+  margin: 8px 0 0;
+  letter-spacing: .2px;
+}
+.hero h1 span{ color:#2e2e2e }
+.hero .emoji{ font-size: .9em }
+
+.subtitle{
+  color: var(--muted);
+  max-width: 52ch;
+}
+
+.cta-row{ display:flex; gap:12px; flex-wrap:wrap; margin-top: 6px; }
+.btn, .btn-outline{
+  display:inline-block; padding:12px 18px; border-radius: 16px; font-weight:600; text-decoration:none;
+  transition:.25s; box-shadow: var(--shadow);
+}
+.btn{ background: linear-gradient(135deg, var(--accent), #ffd9d3); color:#2b2b2b }
+.btn:hover{ transform: translateY(-1px) scale(1.01) }
+.btn-outline{ background:#fff; color:#2b2b2b }
+.btn-outline:hover{ transform: translateY(-1px); }
+
+.hero-photo{
+  border-radius: var(--radius); overflow:hidden; box-shadow: var(--shadow);
+  transform: translateY(6px);
+}
+.hero-photo img{ width:100%; height:100%; object-fit:cover; display:block }
+
+.section{ padding: 56px 24px; max-width: 1100px; margin: 0 auto }
+.section h2{
+  font-family: 'Playfair Display', serif; font-size: clamp(22px, 3.6vw, 36px); margin: 0 0 16px;
+}
+
+.card{
+  background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+#message p{ margin: 10px 0; font-size: 18px; }
+.signoff{ font-weight: 600 }
+.heart{ filter: saturate(1.2) }
+
+.divider{ height:1px; background: linear-gradient(90deg, transparent, #eee, transparent); margin: 18px 0 }
+.note{ color: var(--muted); font-size: 14px }
+
+.grid{
+  display:grid; gap: 18px;
+  grid-template-columns: repeat(12, 1fr);
+}
+.grid .card{ padding: 0; overflow:hidden }
+.grid figure{ margin:0 }
+.grid img{ width:100%; height: 320px; object-fit: cover; display:block; transition: transform .6s ease }
+.grid figure:hover img{ transform: scale(1.02) }
+.grid figcaption{ padding: 12px 14px; color: #555; background: #fff }
+
+@media (max-width: 1100px){
+  .grid img{ height: 260px }
+}
+@media (max-width: 860px){
+  .grid{ grid-template-columns: 1fr }
+}
+
+.footer{
+  text-align:center; color: #444; padding: 40px 16px 60px;
+}
+
+.fade-in{ animation: fadeIn .8s ease both }
+@keyframes fadeIn{
+  from{ opacity:0; transform: translateY(8px) }
+  to{ opacity:1; transform: none }
+}
+
+/* Reveal on scroll */
+.observe{ opacity:0; transform: translateY(8px); transition: opacity .7s ease, transform .7s ease }
+.observe.revealed{ opacity:1; transform: translateY(0) }
